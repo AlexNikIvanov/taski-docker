@@ -102,7 +102,7 @@ jobs:
           # Для каждого пересобранного образа 
           # устанавливаем тег latest, чтобы потом
           # на сервере и в docker-compose.yml не указывать версию
-          tags: ваш-логин-на-docker-hub/taski_backend:latest
+          tags: ivanovdriller/taski_backend:latest
   # Единственная задача — склонировать код 
   # и вывести в консоль дерево файлов
   # checkout-and-print-tree:
