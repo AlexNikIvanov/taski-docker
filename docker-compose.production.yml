@@ -26,6 +26,6 @@ services:
     image: ivanovdriller/taski_gateway  # Качаем с Docker Hub
     env_file: .env
     volumes:
-      - static_volume:/staticfiles/
+      - static_volume:/static/
     ports:
       - 8000:80
