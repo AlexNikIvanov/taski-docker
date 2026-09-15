@@ -14,16 +14,27 @@ services:
   backend:
     image: ivanovdriller/taski_backend # Качаем с Docker Hub
     env_file: .env
+    restart: always
     volumes:
       - static_volume:/backend_static
+    depends_on:
+      db:
+        condition: service_started
   frontend:
     image: ivanovdriller/taski_frontend  # Качаем с Docker Hub
     env_file: .env
+    restart: always
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static_volume:/frontend_static
   gateway:
     image: ivanovdriller/taski_gateway  # Качаем с Docker Hub
+    restart: always
+    depends_on:
+      backend:
+        condition: service_started
+      frontend:
+        condition: service_started
     env_file: .env
     volumes:
       - static_volume:/static/
